@@ -92,6 +92,14 @@ and `FacebookShareButton`:
 
 * `title`: Title of the shared page (string)
 
+Optional props for `FacebookShareButton`. These are all related to the facebook
+[feed dialog](https://developers.facebook.com/docs/sharing/reference/feed-dialog).
+
+* `description`: Will set the description of the item to share in the feed dialog. (string)
+* `media`: This will set the `picture` field. And it will contain the image you wish to share. (string)
+* `caption`: The text on the link on the picture to share. (string)
+* `appId`: Your application id. (string)
+
 Required prop for `PinterestShareButton`:
 
 * `media`: An absolute link to the image that will be pinned (string)
