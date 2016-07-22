@@ -10,14 +10,14 @@ export function email(subject, body) {
   return 'mailto:' + objectToGetParams({ subject, body });
 }
 
-export function twitter(url, { text, via, hashtags = [] }) {
+export function twitter(url, { title, via, hashtags = [] }) {
   assert(url, 'twitter.url');
-  assert(text, 'twitter.text');
+  assert(title, 'twitter.title');
   assert(Array.isArray(hashtags), 'twitter.hashtags is not an array');
 
   return 'https://twitter.com/share' + objectToGetParams({
     url,
-    text,
+    text: title,
     via,
     hashtags: hashtags.join(','),
   });
@@ -27,13 +27,13 @@ export function facebook(url, { appId, media, description, caption }) {
   assert(url, 'facebook.url');
 
   return 'https://www.facebook.com/dialog/feed' + objectToGetParams({
-      link: url,
-      display: 'popup',
-      description,
-      caption,
-      picture: media,
-      appId,
-    });
+    link: url,
+    display: 'popup',
+    description,
+    caption,
+    picture: media,
+    appId,
+  });
 }
 
 export function googlePlus(url) {

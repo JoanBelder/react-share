@@ -1,5 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
+import cx from 'classnames';
 
 import {
   getFacebookShareCount,
@@ -23,12 +24,22 @@ const SocialMediaShareCount = React.createClass({
   },
 
   componentDidMount() {
+    this.updateCount(this.props.url);
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.url !== this.props.url) {
+      this.updateCount(nextProps.url);
+    }
+  },
+
+  updateCount(url) {
     if (this.props.getCount) {
       this.setState({
         isLoading: true,
       });
 
-      this.props.getCount(this.props.url, count => {
+      this.props.getCount(url, count => {
         if (this.isMounted()) {
           this.setState({
             count,
@@ -47,21 +58,20 @@ const SocialMediaShareCount = React.createClass({
 
     const {
       children,
+      className,
     } = this.props;
 
-    const className = `SocialMediaShareCount ${this.props.className || ''}`;
-
-    const render = children || function renderCount(shareCount) {
-      return shareCount;
-    };
-
     return (
-      <div {...this.props} className={className}>
-        {!isLoading && render(count || 0)}
+      <div className={cx('SocialMediaShareCount', className)}>
+        {!isLoading && children(count || 0)}
       </div>
     );
   },
 });
+
+SocialMediaShareCount.defaultProps = {
+  children: shareCount => shareCount,
+};
 
 function shareCountFactory(getCount) {
   return props =>

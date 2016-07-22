@@ -9,6 +9,7 @@ const supportedNetworks = Object.keys(links);
 
 export default class ShareButton extends Component {
   static propTypes = {
+    children: PropTypes.node,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     disabledStyle: PropTypes.object,
@@ -38,12 +39,12 @@ export default class ShareButton extends Component {
 
   render() {
     const {
+      children,
       className,
       disabled,
       disabledStyle,
       network,
       style,
-      ...rest,
     } = this.props;
 
     const classes = cx(
@@ -57,14 +58,15 @@ export default class ShareButton extends Component {
     );
 
     return (
-      <div {...rest}
+      <div
         onClick={this.onClick}
-        url={this.link()}
         className={classes}
         style={{
           ...style,
           ...(disabled ? disabledStyle : {}),
-        }} />
+        }}>
+        {children}
+      </div>
     );
   }
 }
@@ -87,7 +89,7 @@ function createShareButton(network, optsMap = () => ({}), propTypes) {
 }
 
 export const FacebookShareButton = createShareButton('facebook', props => ({
-  title: PropTypes.string.isRequired,
+  title: props.title,
   appId: props.appId,
   media: props.media,
   description: props.description,
@@ -101,12 +103,12 @@ export const FacebookShareButton = createShareButton('facebook', props => ({
 });
 
 export const TwitterShareButton = createShareButton('twitter', props => ({
-  text: props.title,
-  via: props.via,
   hashtags: props.hashtags,
+  title: props.title,
+  via: props.via,
 }), {
+  hashtags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   via: PropTypes.string,
 });
 

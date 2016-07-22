@@ -1,5 +1,8 @@
 # react-share
 
+[![npm version](https://badge.fury.io/js/react-share.svg)](https://badge.fury.io/js/react-share)
+[![Download Count](http://img.shields.io/npm/dm/react-share.svg?style=flat-square)](https://npmjs.org/package/react-share)
+
 > Easy social media share buttons and share counts.
 
 <img src="example.png" alt="Share buttons and counts example" />
@@ -75,38 +78,18 @@ const {
 } = ShareButtons;
 ```
 
-Required props for all:
+##### Share button props
 
-* `children`: A React node (e.g. string or element)
-
-* `url`: URL of the shared page (string)
-
-Optional props for all:
-
-* `disabled`: Disables click action and adds `disabled` class (bool)
-
-* `disabledStyle`: Style when button is disabled (object, default = { opacity: 0.6 })
-
-Required props for `LinkedinShareButton`, `TwitterShareButton`
-and `FacebookShareButton`:
-
-* `title`: Title of the shared page (string)
-
-Optional props for `FacebookShareButton`. These are all related to the facebook
-[feed dialog](https://developers.facebook.com/docs/sharing/reference/feed-dialog).
-
-* `description`: Will set the description of the item to share in the feed dialog. (string)
-* `media`: This will set the `picture` field. And it will contain the image you wish to share. (string)
-* `caption`: The text on the link on the picture to share. (string)
-* `appId`: Your application id. (string)
-
-Required prop for `PinterestShareButton`:
-
-* `media`: An absolute link to the image that will be pinned (string)
-
-Optional props for `PinterestShareButton`:
-
-* `description`: Description for the shared media.
+|       |Required props|Optional props|
+|-------|--------|--------------|
+|__All__|__`children`__: A React node (e.g. string or element)<br />__`url`__: URL of the shared page (string)|__`disabled`__: Disables click action and adds `disabled` class (bool)<br/>__`disabledStyle`__: Style when button is disabled (object, default = { opacity: 0.6 })|
+|FacebookShareButton|-|The optional props are all related the [feed dialog](https://developers.facebook.com/docs/sharing/reference/feed-dialog).<br/>__`title`__: Title of the shared page (string)<br/>__`description`__: Description of the shared page (string)<br/>__`media`__: This will set the `picture` field. And it will contain the image you wish to share. (string)<br/>__`caption`__: The text on the link on the picture to share. (string)<br/>__`appId`__: Your application id. This is not needed in order to let the share button work (string)|
+|GooglePlusShareButton|-|-|
+|LinkedinShareButton|__`title`__: Title of the shared page (string)|-|
+|TwitterShareButton|__`title`__: Title of the shared page (string)|__`via`__: (string)<br/>__`hashtags`__: (array)|
+|PinterestShareButton|__`media`__: An absolute link to the image that will be pinned (string)|__`description`__: Description for the shared media.|
+|VKShareButton|-|-|
+>>>>>>> upstream/master
 
 ### Share counts
 

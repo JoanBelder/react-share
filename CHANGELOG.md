@@ -1,3 +1,16 @@
+## 1.8.2 (July 8, 2016)
+
+* Added `title` and `description` props for FacebookShareButton. `title` was not working correctly previously.
+
+## 1.8.1 (July 3, 2016)
+
+* Fixed propType warnings that were caused by updating to React v. 15.2.0
+
+## 1.8.0 (June 17, 2016)
+
+* Share count will now be updated if url prop is changed
+* Error callback with Facebook share counts is now correctly called
+
 ## 1.7.0 (May 28, 2016)
 
 * added disabled and disabledStyle props to share buttons
