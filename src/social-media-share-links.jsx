@@ -32,7 +32,7 @@ export function facebook(url, { appId, media, description, caption }) {
     description,
     caption,
     picture: media,
-    appId,
+    app_id: appId,
   });
 }
 
